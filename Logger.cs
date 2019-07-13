@@ -1,3 +1,4 @@
+using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Collections;
@@ -10,20 +11,18 @@ using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text.RegularExpressions;
 using System.Text;
-using System;
 using com.darktechsystems;
 
-class Solution {
-
-   static string Challenge() {
-        var logger = new Logger();
-        var ret = "Hello World!";
-        return ret;
-    }
-
-    static void Main(string[] args) {
-        var logger = new Logger();
-        var result = Challenge();
-        logger.Log(result.ToString());
+namespace com.darktechsystems
+{
+public class Logger : ILogger {
+    /*
+    Supports second argument to specify if logging is to console or debug only
+    */
+    public void Log(string arg) {
+        System.Diagnostics.Debug.Print($"*****(Debug){arg}\n");
+        Console.WriteLine($"{arg}");
+   	}
     }
 }
+
